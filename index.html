@@ -1,0 +1,1400 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="school.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>韶关市和平路小学校园论坛</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, system-ui, sans-serif; }
+        body { 
+            background: #f5f7fa;
+            color: #2c3e50; 
+            min-height: 100vh;
+        }
+        
+        /* 头部样式 - 白色主题 */
+        .site-header {
+            background: white;
+            color: #2c3e50;
+            padding: 12px 30px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.03), 0 4px 6px rgba(0,0,0,0.02);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #eef2f7;
+        }
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .logo {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            border: 1px solid #eef2f7;
+        }
+        .school-logo-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            object-fit: cover;
+            border: 1px solid #eef2f7;
+            background: white;
+            cursor: pointer;
+        }
+        .school-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: #2c3e50;
+        }
+        .header-title {
+            flex: 1;
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #2c3e50;
+            text-shadow: none;
+        }
+        .disclaimer {
+            background: #f0f3f8;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            color: #5a6a7a;
+            border: 1px solid #e2e8f0;
+        }
+        
+        /* 移动端检测提示 */
+        .mobile-detection-banner {
+            display: none;
+            background: #e6f0fa;
+            padding: 10px 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            border-bottom: 1px solid #d4e3fd;
+        }
+        .mobile-detection-banner a {
+            color: #2c3e50;
+            font-weight: 600;
+            text-decoration: underline;
+        }
+        
+        /* 主容器 */
+        .main-container {
+            max-width: 1400px;
+            margin: 30px auto;
+            padding: 0 25px;
+        }
+        
+        /* 统计卡片 */
+        .stats-section {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+            border: 1px solid #eef2f7;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .stat-card {
+            background: white;
+            color: #2c3e50;
+            padding: 25px;
+            border-radius: 16px;
+            text-align: center;
+            transition: transform 0.3s;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.02);
+            border: 1px solid #eef2f7;
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.04);
+            border-color: #cbd5e0;
+        }
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #2c3e50;
+        }
+        .stat-label {
+            font-size: 1rem;
+            color: #6b7b8c;
+        }
+        
+        /* 主要内容区域 */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 25px;
+        }
+        @media (max-width: 992px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* 帖子列表 */
+        .posts-section {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+            border: 1px solid #eef2f7;
+        }
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eef2f7;
+        }
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        .refresh-btn {
+            background: white;
+            color: #2c3e50;
+            border: 1px solid #e2e8f0;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.01);
+        }
+        .refresh-btn:hover {
+            background: #f8fafc;
+            border-color: #cbd5e0;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.02);
+        }
+        
+        /* 帖子卡片 */
+        .posts-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .post-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 25px;
+            transition: all 0.3s;
+            border: 1px solid #edf2f7;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.01);
+        }
+        .post-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.02);
+            border-color: #b3c0d0;
+        }
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        .post-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .author-avatar {
+            width: 45px;
+            height: 45px;
+            background: #eef2f7;
+            color: #2c3e50;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 1.2rem;
+            border: 1px solid #dce3ec;
+        }
+        .author-info h4 {
+            color: #2d3748;
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+        }
+        .post-meta {
+            color: #8a9aa8;
+            font-size: 0.9rem;
+        }
+        .post-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 12px;
+        }
+        .post-excerpt {
+            color: #4a5568;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            max-height: 60px;
+            overflow: hidden;
+            position: relative;
+        }
+        .post-excerpt:after {
+            content: '...';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(to right, transparent, #ffffff 60%);
+            padding-left: 20px;
+        }
+        .post-footer {
+            display: flex;
+            gap: 20px;
+            color: #7b8b9c;
+            font-size: 0.95rem;
+        }
+        .post-footer span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        /* 右侧发布栏 */
+        .post-form-section {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+            border: 1px solid #eef2f7;
+            position: sticky;
+            top: 100px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2d3748;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+        .form-control {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e9edf3;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            background: #ffffff;
+        }
+        .form-control:focus {
+            outline: none;
+            border-color: #a0b8cc;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(160,184,204,0.1);
+        }
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        .char-counter {
+            text-align: right;
+            margin-top: 5px;
+            font-size: 0.9rem;
+            color: #7b8b9c;
+        }
+        .char-counter.warning {
+            color: #e53e3e;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: white;
+            color: #2c3e50;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .submit-btn:hover {
+            background: #f8fafc;
+            border-color: #b3c6d9;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.02);
+        }
+        .submit-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+            background: #f1f4f8;
+        }
+        
+        /* 模态框样式 */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.2);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            backdrop-filter: blur(4px);
+        }
+        .modal-content {
+            background: white;
+            border-radius: 24px;
+            width: 100%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: modalAppear 0.4s;
+            border: 1px solid #edf2f7;
+            box-shadow: 0 30px 50px rgba(0,0,0,0.05);
+        }
+        @keyframes modalAppear {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .modal-header {
+            padding: 25px 30px;
+            border-bottom: 1px solid #eef2f7;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            color: #2c3e50;
+            border-radius: 24px 24px 0 0;
+        }
+        .modal-header h2 {
+            font-size: 1.5rem;
+            color: #2c3e50;
+        }
+        .modal-close {
+            background: #f0f4fa;
+            border: none;
+            color: #2c3e50;
+            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #e2e8f0;
+        }
+        .modal-close:hover {
+            background: #e2e8f0;
+            transform: rotate(90deg);
+        }
+        .modal-body {
+            padding: 30px;
+        }
+        
+        /* 帖子详情 */
+        .post-detail {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f9fbfd;
+            border-radius: 16px;
+            border: 1px solid #edf2f7;
+        }
+        .post-detail-title {
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        .post-detail-meta {
+            display: flex;
+            gap: 20px;
+            color: #718096;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .post-detail-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #4a5568;
+            white-space: pre-wrap;
+        }
+        
+        /* 回复列表 */
+        .replies-section {
+            margin-top: 30px;
+        }
+        .replies-title {
+            font-size: 1.3rem;
+            color: #2d3748;
+            margin-bottom: 20px;
+        }
+        .reply-item {
+            background: #f9fbfd;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border: 1px solid #edf2f7;
+        }
+        .reply-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            color: #718096;
+            font-size: 0.95rem;
+        }
+        .reply-author {
+            font-weight: 600;
+            color: #2d3748;
+        }
+        .reply-content {
+            color: #4a5568;
+            line-height: 1.6;
+        }
+        
+        /* 回复表单 */
+        .reply-form {
+            margin-top: 30px;
+            padding: 25px;
+            background: #f9fbfd;
+            border-radius: 16px;
+            border: 1px solid #edf2f7;
+        }
+        .reply-form-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        
+        /* 消息提示 */
+        .toast {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            padding: 16px 24px;
+            background: white;
+            color: #2c3e50;
+            border-radius: 12px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.03);
+            z-index: 3000;
+            display: none;
+            animation: slideIn 0.3s;
+            border: 1px solid #e2e8f0;
+            border-left: 4px solid #a5c0d8;
+        }
+        .toast.error {
+            border-left: 4px solid #f5a3a3;
+        }
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        /* 举报按钮（悬浮） */
+        .report-float-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 50px;
+            padding: 12px 24px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+            color: #2c3e50;
+            transition: all 0.3s;
+        }
+        .report-float-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-color: #b3c6d9;
+        }
+        
+        /* 页脚 */
+        .site-footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+            color: #718096;
+            border-top: 1px solid #e2e8f0;
+            background: white;
+        }
+        .disclaimer-text {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #a0aec0;
+        }
+        .footer-link {
+            color: #718096;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        .footer-link:hover {
+            color: #2c3e50;
+        }
+        
+        /* 加载动画 */
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #718096;
+        }
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #edf2f7;
+            border-top-color: #a0b8cc;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 15px;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* 空状态 */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #a0aec0;
+        }
+        .empty-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+        
+        /* 提示框 */
+        .info-box {
+            background: #f0f7ff;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #d4e3fd;
+        }
+        .info-box p {
+            color: #2c3e50;
+        }
+        .info-box small {
+            color: #5a6a7a;
+        }
+        .code-example {
+            background: #e6f0fa;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        .warning-box {
+            margin-top: 20px;
+            padding: 12px;
+            background: #fff5f5;
+            border-radius: 8px;
+            border: 1px solid #fed7d7;
+        }
+        .warning-text {
+            color: #c53030;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        /* 捐赠按钮及二维码 */
+        .donate-corner {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            z-index: 998;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        .donate-trigger {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 40px;
+            padding: 10px 20px;
+            font-size: 0.95rem;
+            color: #5a6a7a;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.03);
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            opacity: 0.75;
+        }
+        .donate-trigger:hover {
+            opacity: 1;
+            background: #f8fafc;
+            border-color: #b3c6d9;
+            transform: translateY(-2px);
+        }
+        .donate-qr-popup {
+            display: none;
+            margin-bottom: 15px;
+            background: white;
+            border-radius: 16px;
+            padding: 15px 15px 10px 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid #edf2f7;
+            text-align: center;
+            width: 160px;
+        }
+        .donate-qr-popup img {
+            width: 130px;
+            height: 130px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 5px;
+            border: 1px solid #edf2f7;
+        }
+        .donate-qr-popup p {
+            font-size: 0.8rem;
+            color: #718096;
+        }
+        .donate-qr-popup .close-donate {
+            margin-top: 5px;
+            font-size: 0.7rem;
+            color: #a0aec0;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        .donate-qr-popup .close-donate:hover {
+            color: #2c3e50;
+        }
+        @media (max-width: 600px) {
+            .donate-corner { bottom: 90px; right: 15px; }
+            .donate-trigger { padding: 8px 16px; font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-container">
+            <div class="logo-area">
+                <img src="school.png" alt="校徽" class="school-logo-img" onclick="window.location.href='/'">
+                <span class="school-name">韶关市和平路小学</span>
+            </div>
+            <div class="header-title">学子交流社区</div>
+            <div class="disclaimer">此网站由个人制作，并非学校官方</div>
+        </div>
+    </header>
+    
+    <!-- 移动端检测提示 -->
+    <div class="mobile-detection-banner" id="mobileBanner">
+        📱 检测到您正在使用移动设备，<a href="javascript:void(0)" onclick="switchToMobile()">点击切换移动端优化版</a> 获得更好体验
+    </div>
+    
+    <div class="main-container">
+        <!-- 统计卡片 -->
+        <div class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value" id="totalPosts">0</div>
+                    <div class="stat-label">总帖子数</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="totalReplies">0</div>
+                    <div class="stat-label">总回复数</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="lastUpdate">-</div>
+                    <div class="stat-label">最后更新</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-grid">
+            <!-- 左侧帖子列表 -->
+            <section class="posts-section">
+                <div class="section-header">
+                    <h2 class="section-title">最新帖子</h2>
+                    <button class="refresh-btn" onclick="loadPosts()">
+                        刷新
+                    </button>
+                </div>
+                
+                <div id="postsList" class="posts-list">
+                    <div class="loading">
+                        <div class="spinner"></div>
+                        加载帖子中...
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 右侧发布新帖 -->
+            <aside class="post-form-section">
+                <h2 class="section-title" style="margin-bottom: 25px;">发布新帖</h2>
+                
+                <form id="postForm">
+                    <div class="form-group">
+                        <label class="form-label">昵称 *</label>
+                        <input type="text" id="authorName" class="form-control" 
+                               placeholder="请输入您的昵称" maxlength="50" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">标题 *</label>
+                        <input type="text" id="postTitle" class="form-control" 
+                               placeholder="请输入帖子标题" maxlength="100" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">内容 *</label>
+                        <textarea id="postContent" class="form-control" 
+                                  placeholder="请输入帖子内容..." 
+                                  maxlength="2000" required></textarea>
+                        <div class="char-counter" id="postCharCounter">
+                            剩余 <span id="postCharCount">2000</span> 字
+                        </div>
+                    </div>
+                    
+                    <button type="button" class="submit-btn" onclick="submitPost()" id="submitBtn">
+                        发布帖子
+                    </button>
+                </form>
+            </aside>
+        </div>
+    </div>
+    
+    <!-- 不起眼角落的捐赠按钮 + 二维码 -->
+    <div class="donate-corner">
+        <div class="donate-qr-popup" id="donateQrPopup">
+            <img src="qr.png" alt="微信收款码" onerror="this.src='https://via.placeholder.com/130?text=qr.png缺失'">
+            <p>微信扫一扫</p>
+            <div class="close-donate" onclick="closeDonatePopup()">关闭</div>
+        </div>
+        <div class="donate-trigger" onclick="toggleDonatePopup()">
+            <span>🧋</span> 请杯奶茶
+        </div>
+    </div>
+
+    <!-- 举报按钮（悬浮） -->
+    <button class="report-float-btn" onclick="openReportModal()">
+        <span style="font-size: 1.2rem;"></span> 举报帖子
+    </button>
+    
+    <footer class="site-footer">
+        <p>韶关市和平路小学 · 学子交流社区</p>
+        <p class="disclaimer-text">本网站为个人项目，与学校官方无关 | 仅用于学习交流</p>
+        <a href="https://bytc.cpolar.top/%E6%9C%AC%E5%85%AC%E5%8F%B8%E5%AE%98%E7%BD%91/index.html" class="footer-link" target="_blank">©版权所有 BOY TECHNOLOGY Studio</a>
+        <p class="disclaimer-text">京ICP备19000698号</p>
+        <p class="disclaimer-text" style="margin-top: 10px;">
+            <a href="#" onclick="openReportModal(); return false;" class="footer-link">举报违规内容</a>
+        </p>
+    </footer>
+    
+    <!-- 帖子详情模态框 -->
+    <div class="modal" id="postModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>帖子详情</h2>
+                <button class="modal-close" onclick="closeModal()">×</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <div class="loading">
+                    <div class="spinner"></div>
+                    加载中...
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 举报模态框 -->
+    <div class="modal" id="reportModal">
+        <div class="modal-content" style="max-width: 500px;">
+            <div class="modal-header">
+                <h2>举报帖子</h2>
+                <button class="modal-close" onclick="closeReportModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="info-box">
+                    <p style="margin-bottom: 8px;"><strong>如何获取帖子编号？</strong></p>
+                    <p style="color: #5a6a7a; font-size: 0.95rem; margin-bottom: 5px;">在帖子列表中，每个帖子的作者信息下方都显示编号，例如：<span class="code-example">#123</span></p>
+                    <p style="color: #5a6a7a; font-size: 0.95rem; margin-top: 8px;">点击帖子查看详情，也能在详情页看到编号。</p>
+                </div>
+                
+                <form id="reportForm" onsubmit="event.preventDefault(); submitReport();">
+                    <div class="form-group">
+                        <label class="form-label">帖子编号 *</label>
+                        <input type="number" id="reportPostId" class="form-control" 
+                               placeholder="例如：123" min="1" required>
+                        <small style="color: #8a9aa8; margin-top: 5px; display: block;">只需要输入数字，不需要 # 号</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">举报原因 *</label>
+                        <textarea id="reportContent" class="form-control" 
+                                  placeholder="请详细描述举报原因（广告、辱骂、违规内容等）" 
+                                  maxlength="500" rows="5" required></textarea>
+                        <div class="char-counter">
+                            剩余 <span id="reportCharCount">500</span> 字
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn" id="reportSubmitBtn">
+                        提交举报
+                    </button>
+                </form>
+                
+                <div class="warning-box">
+                    <p class="warning-text">
+                        <span></span> 请勿恶意举报，管理员会审核每条举报信息
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 消息提示 -->
+    <div class="toast" id="toast"></div>
+    
+    <script>
+        // API配置
+        const API = {
+            posts: 'list.php',
+            submit: 'post.php',
+            reply: 'reply.php',
+            stats: 'list.php?action=stats',
+            report: 'report.php'
+        };
+        
+        // 当前查看的帖子ID
+        let currentPostId = null;
+        
+        // 检测移动设备并显示提示
+        function checkMobileDevice() {
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+            if (isMobile) {
+                document.getElementById('mobileBanner').style.display = 'block';
+                // 可以设置一个标记，避免每次刷新都提示
+                if (!sessionStorage.getItem('mobileBannerClosed')) {
+                    setTimeout(() => {
+                        document.getElementById('mobileBanner').style.opacity = '1';
+                    }, 1000);
+                }
+            }
+        }
+        
+        // 切换到移动端
+        function switchToMobile() {
+            window.location.href = 'index_mobile.html';
+        }
+        
+        // 关闭横幅（可选）
+        function closeMobileBanner() {
+            document.getElementById('mobileBanner').style.display = 'none';
+            sessionStorage.setItem('mobileBannerClosed', 'true');
+        }
+        
+        // 显示消息
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = 'toast ' + (type === 'error' ? 'error' : '');
+            toast.style.display = 'block';
+            
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 3000);
+        }
+        
+        // 格式化时间
+        function formatTime(timeString) {
+            if (!timeString) return '未知时间';
+            try {
+                const date = new Date(timeString);
+                const now = new Date();
+                const diff = Math.floor((now - date) / 1000);
+                
+                if (diff < 60) return '刚刚';
+                if (diff < 3600) return Math.floor(diff / 60) + '分钟前';
+                if (diff < 86400) return Math.floor(diff / 3600) + '小时前';
+                if (diff < 172800) return '昨天';
+                
+                return date.toLocaleString('zh-CN', { month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' });
+            } catch {
+                return timeString;
+            }
+        }
+        
+        // 获取头像字母
+        function getAvatarLetter(name) {
+            return name ? name.charAt(0).toUpperCase() : '?';
+        }
+        
+        // 加载统计
+        async function loadStats() {
+            try {
+                const response = await fetch(API.stats);
+                const data = await response.json();
+                
+                document.getElementById('totalPosts').textContent = data.total_posts || 0;
+                document.getElementById('totalReplies').textContent = data.total_replies || 0;
+                
+                if (data.last_updated) {
+                    document.getElementById('lastUpdate').textContent = formatTime(data.last_updated);
+                }
+            } catch (error) {
+                console.error('加载统计失败:', error);
+            }
+        }
+        
+        // 加载帖子列表
+        async function loadPosts() {
+            const container = document.getElementById('postsList');
+            
+            container.innerHTML = '<div class="loading"><div class="spinner"></div>加载帖子中...</div>';
+            
+            try {
+                const response = await fetch(API.posts);
+                const posts = await response.json();
+                
+                if (!posts || posts.length === 0) {
+                    container.innerHTML = `
+                        <div class="empty-state">
+                            <div class="empty-icon"></div>
+                            <h3>还没有帖子</h3>
+                            <p>快来发布第一个帖子吧！</p>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                let html = '';
+                posts.forEach(post => {
+                    html += `
+                        <div class="post-card" onclick="viewPost(${post.id})">
+                            <div class="post-header">
+                                <div class="post-author">
+                                    <div class="author-avatar">${getAvatarLetter(post.username)}</div>
+                                    <div class="author-info">
+                                        <h4>${escapeHtml(post.username)}</h4>
+                                        <div class="post-meta">#${post.id}</div>
+                                    </div>
+                                </div>
+                                <div class="post-meta">${formatTime(post.time)}</div>
+                            </div>
+                            <div class="post-title">${escapeHtml(post.title)}</div>
+                            <div class="post-excerpt">${escapeHtml(post.content.substring(0, 150))}</div>
+                            <div class="post-footer">
+                                <span> ${post.reply_count || 0} 回复</span>
+                                <span> 最后回复: ${post.last_reply_time ? formatTime(post.last_reply_time) : '暂无'}</span>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                container.innerHTML = html;
+                loadStats();
+                
+            } catch (error) {
+                console.error('加载失败:', error);
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-icon">❌</div>
+                        <h3>加载失败</h3>
+                        <p>${error.message}</p>
+                        <button class="refresh-btn" onclick="loadPosts()" style="margin-top: 15px;">重试</button>
+                    </div>
+                `;
+            }
+        }
+        
+        // 查看帖子详情
+        async function viewPost(postId) {
+            currentPostId = postId;
+            const modal = document.getElementById('postModal');
+            const modalBody = document.getElementById('modalBody');
+            
+            modal.style.display = 'flex';
+            modalBody.innerHTML = '<div class="loading"><div class="spinner"></div>加载中...</div>';
+            
+            try {
+                const response = await fetch(`list.php?post_id=${postId}`);
+                const data = await response.json();
+                
+                if (!data.success) {
+                    modalBody.innerHTML = `<div class="empty-state">❌ ${data.message}</div>`;
+                    return;
+                }
+                
+                const post = data.post;
+                const replies = data.replies || [];
+                
+                let repliesHtml = '';
+                if (replies.length === 0) {
+                    repliesHtml = '<div class="empty-state">还没有回复，来抢沙发吧！</div>';
+                } else {
+                    repliesHtml = replies.map(reply => `
+                        <div class="reply-item">
+                            <div class="reply-header">
+                                <span class="reply-author"> ${escapeHtml(reply.username)}</span>
+                                <span>${formatTime(reply.time)}</span>
+                            </div>
+                            <div class="reply-content">${escapeHtml(reply.content).replace(/\n/g, '<br>')}</div>
+                        </div>
+                    `).join('');
+                }
+                
+                modalBody.innerHTML = `
+                    <div class="post-detail">
+                        <h1 class="post-detail-title">${escapeHtml(post.title)}</h1>
+                        <div class="post-detail-meta">
+                            <span> ${escapeHtml(post.username)}</span>
+                            <span> ${formatTime(post.time)}</span>
+                            <span> ${replies.length} 回复</span>
+                            <span style="cursor: pointer; color: #e53e3e;" onclick="reportCurrentPost()">⚠️ 举报</span>
+                        </div>
+                        <div class="post-detail-content">${escapeHtml(post.content).replace(/\n/g, '<br>')}</div>
+                    </div>
+                    
+                    <div class="replies-section">
+                        <h3 class="replies-title"> 全部回复 (${replies.length})</h3>
+                        ${repliesHtml}
+                    </div>
+                    
+                    <div class="reply-form">
+                        <h4 class="reply-form-title">📝 发表回复</h4>
+                        <form onsubmit="event.preventDefault(); submitReply();">
+                            <div class="form-group">
+                                <input type="text" id="replyName" class="form-control" 
+                                       placeholder="您的昵称" maxlength="50" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea id="replyContent" class="form-control" 
+                                          placeholder="写下您的回复..." 
+                                          maxlength="2000" rows="4" required></textarea>
+                                <div class="char-counter" id="replyCharCounter">
+                                    剩余 <span id="replyCharCount">2000</span> 字
+                                </div>
+                            </div>
+                            <button type="submit" class="submit-btn">提交回复</button>
+                        </form>
+                    </div>
+                `;
+                
+                // 绑定回复框计数器
+                const replyInput = document.getElementById('replyContent');
+                if (replyInput) {
+                    replyInput.addEventListener('input', function() {
+                        const remaining = 2000 - this.value.length;
+                        document.getElementById('replyCharCount').textContent = remaining;
+                    });
+                }
+                
+            } catch (error) {
+                console.error('加载帖子详情失败:', error);
+                modalBody.innerHTML = `<div class="empty-state">❌ 加载失败: ${error.message}</div>`;
+            }
+        }
+        
+        // 提交回复
+        async function submitReply() {
+            const name = document.getElementById('replyName')?.value.trim();
+            const content = document.getElementById('replyContent')?.value.trim();
+            
+            if (!name) {
+                showToast('请输入昵称', 'error');
+                return;
+            }
+            
+            if (!content) {
+                showToast('请输入回复内容', 'error');
+                return;
+            }
+            
+            if (content.length > 2000) {
+                showToast('内容过长', 'error');
+                return;
+            }
+            
+            const formData = new FormData();
+            formData.append('post_id', currentPostId);
+            formData.append('username', name);
+            formData.append('content', content);
+            
+            try {
+                const response = await fetch(API.reply, {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showToast('回复成功！');
+                    viewPost(currentPostId);
+                    setTimeout(loadPosts, 1000);
+                } else {
+                    showToast(result.message, 'error');
+                }
+                
+            } catch (error) {
+                console.error('回复失败:', error);
+                showToast('网络错误，请重试', 'error');
+            }
+        }
+        
+        // 提交新帖子
+        async function submitPost() {
+            const name = document.getElementById('authorName').value.trim();
+            const title = document.getElementById('postTitle').value.trim();
+            const content = document.getElementById('postContent').value.trim();
+            const submitBtn = document.getElementById('submitBtn');
+            
+            if (!name) {
+                showToast('请输入昵称', 'error');
+                return;
+            }
+            
+            if (!title) {
+                showToast('请输入标题', 'error');
+                return;
+            }
+            
+            if (!content) {
+                showToast('请输入内容', 'error');
+                return;
+            }
+            
+            if (name.length > 50) {
+                showToast('昵称过长', 'error');
+                return;
+            }
+            
+            if (title.length > 100) {
+                showToast('标题过长', 'error');
+                return;
+            }
+            
+            if (content.length > 2000) {
+                showToast('内容过长', 'error');
+                return;
+            }
+            
+            submitBtn.disabled = true;
+            submitBtn.textContent = '发布中...';
+            
+            const formData = new FormData();
+            formData.append('username', name);
+            formData.append('title', title);
+            formData.append('content', content);
+            
+            try {
+                const response = await fetch(API.submit, {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showToast('帖子发布成功！');
+                    document.getElementById('authorName').value = '';
+                    document.getElementById('postTitle').value = '';
+                    document.getElementById('postContent').value = '';
+                    document.getElementById('postCharCount').textContent = '2000';
+                    
+                    setTimeout(() => {
+                        loadPosts();
+                    }, 1000);
+                } else {
+                    showToast(result.message, 'error');
+                }
+                
+            } catch (error) {
+                console.error('发布失败:', error);
+                showToast('网络错误，请重试', 'error');
+                
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = '发布帖子';
+            }
+        }
+        
+        // 打开举报模态框
+        function openReportModal() {
+            document.getElementById('reportModal').style.display = 'flex';
+            document.getElementById('reportPostId').value = '';
+            document.getElementById('reportContent').value = '';
+            document.getElementById('reportCharCount').textContent = '500';
+        }
+        
+        // 关闭举报模态框
+        function closeReportModal() {
+            document.getElementById('reportModal').style.display = 'none';
+        }
+        
+        // 举报当前帖子（从详情页调用）
+        function reportCurrentPost() {
+            if (currentPostId) {
+                document.getElementById('reportPostId').value = currentPostId;
+                openReportModal();
+            } else {
+                openReportModal();
+            }
+        }
+        
+        // 提交举报
+        async function submitReport() {
+            const postId = document.getElementById('reportPostId').value.trim();
+            const content = document.getElementById('reportContent').value.trim();
+            const submitBtn = document.getElementById('reportSubmitBtn');
+            
+            if (!postId) {
+                showToast('请输入帖子编号', 'error');
+                return;
+            }
+            
+            if (!content) {
+                showToast('请输入举报原因', 'error');
+                return;
+            }
+            
+            if (content.length > 500) {
+                showToast('举报内容过长', 'error');
+                return;
+            }
+            
+            submitBtn.disabled = true;
+            submitBtn.textContent = '提交中...';
+            
+            const formData = new FormData();
+            formData.append('post_id', postId);
+            formData.append('content', content);
+            
+            try {
+                const response = await fetch(API.report, {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showToast(result.message);
+                    closeReportModal();
+                } else {
+                    showToast(result.message, 'error');
+                }
+                
+            } catch (error) {
+                console.error('举报提交失败:', error);
+                showToast('网络错误，请重试', 'error');
+                
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = '提交举报';
+            }
+        }
+        
+        // 关闭帖子详情模态框
+        function closeModal() {
+            document.getElementById('postModal').style.display = 'none';
+        }
+        
+        // 点击模态框背景关闭
+        window.onclick = function(event) {
+            const postModal = document.getElementById('postModal');
+            const reportModal = document.getElementById('reportModal');
+            if (event.target === postModal) {
+                closeModal();
+            }
+            if (event.target === reportModal) {
+                closeReportModal();
+            }
+        }
+        
+        // ESC键关闭
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+                closeReportModal();
+            }
+        });
+        
+        // HTML转义
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+        
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            checkMobileDevice();
+            loadPosts();
+            
+            const postContent = document.getElementById('postContent');
+            if (postContent) {
+                postContent.addEventListener('input', function() {
+                    const remaining = 2000 - this.value.length;
+                    document.getElementById('postCharCount').textContent = remaining;
+                });
+            }
+            
+            const reportContent = document.getElementById('reportContent');
+            if (reportContent) {
+                reportContent.addEventListener('input', function() {
+                    const remaining = 500 - this.value.length;
+                    document.getElementById('reportCharCount').textContent = remaining;
+                });
+            }
+            
+            setInterval(loadPosts, 30000);
+        });
+
+        // 捐赠按钮相关
+        function toggleDonatePopup() {
+            const popup = document.getElementById('donateQrPopup');
+            if (popup.style.display === 'none' || popup.style.display === '') {
+                popup.style.display = 'block';
+            } else {
+                popup.style.display = 'none';
+            }
+        }
+        function closeDonatePopup() {
+            document.getElementById('donateQrPopup').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
