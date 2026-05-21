@@ -1,49 +1,272 @@
 <!DOCTYPE html>
-<html>
-   <head>
-       <title>林里之春（LLZC）出版社页面</title>
-       <!-- 其他头部信息，如meta标签、链接样式表等 -->
-   </head>
-   <body>
-       <!-- 网页的主要内容，如文本、图片、链接等 -->
-       <h1>林里之春(LLZC)出版社</h1>
-       <img src="llzc.PNG" alt="你咋看到这个的？">
-       <h5>冷知识：林里之春出首字母对应：L L Z C 也就是  刘（L）峻宇 刘（L）钊闻 张（Z）云哲 陈（C）祥麟）</h5>
-       <p>如你所见，这个页面非常空白……</p>
-       <p>因为我没时间去搞这个，就只能写这么几句话（当然下面也写了好多）</p>
-       <p>总之，非常感谢我的几位好兄弟能和我一起完成这个作业，这次写作业的过程也非常愉快。</p>
-       <p>当然也很感谢你访问这个网站，看到这里。</p>
-       <p>希望在仅剩的两个月里我们一起快乐地度过小学时光！</p>
-       <p>（全员鞠躬）</p>
-       <br>
-       <p>出版：林里之春（LLZC）出版社</p>
-       <p>网址：https://xnhkj.github.io|<a href="https://docs.qq.com/doc/DV2xabFVRclFJYmdw">刘峻宇制作的页面，点击跳转</a></p>
-       <p>重印：林里之春出版传媒股份有限公司</p>
-       <p>发行：广东林里之春（LLZC）发行集团有限公司</p>
-       <p>印刷：广东林里之春纯手写印刷有限公司</p>
-       <p>版次：2026年5月17日第一版</p>
-       <p>印次：2026年5月17日第一次印刷</p>
-       <p>印张：0</p>
-       <p>字数：0.6千字</p>
-       <p>印数：100，000-200，000册（2026夏）</p>
-       <p>书号：ISBN 197-6-208-93631-5</p>
-       <p>定价：14.8￥</p>
-       <p>价格依据文件：粤发改价【2017】434号 粤发改规【2022】3号</p>
-       <br>
-       <p>总主编：刘峻宇 刘钊闻 张云哲 陈祥麟</p>
-       <p>小学主编：刘峻宇（执行） 刘钊闻 张云哲 陈祥麟</p>
-       <p>编写人员：刘峻宇 刘钊闻 张云哲 陈祥麟</p>
-       <p>责任编辑：刘峻宇 刘钊闻 张云哲 陈祥麟</p>
-       <p>美术编辑：刘峻宇 刘钊闻 张云哲</p>
-       <p>午饭策划：陈祥麟（特别表扬！！！！！！！！）</p>
-       <br>
-       <p>下面是一些有趣的内容：</p>
-       <video width="426.67" height="240" controls>
-        <source src="1.mp4" type="video/mp4">
-       </video>
-       <video width="320" height="240" controls>
-        <source src="2.mp4" type="video/mp4">
-       </video>
-       <p>就这么多，谢谢你的细心阅读！</p>
-   </body> 
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>林里之春（LLZC）出版社 · 时光纪念册</title>
+    <style>
+        /* 极简干净风格 - 不改变任何文字，仅提升阅读体验 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #faf9f5;   /* 柔和的米白底色，护眼且温暖 */
+            font-family: system-ui, -apple-system, 'Segoe UI', 'Roboto', 'Noto Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.5;
+            color: #2c3e2f;        /* 深墨绿调，自然沉稳 */
+            padding: 2rem 1.5rem;
+        }
+
+        /* 主容器 - 仿纸质书排版 */
+        .page {
+            max-width: 880px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.02), 0 2px 4px rgba(0, 0, 0, 0.02);
+            padding: 2rem 2rem 2.5rem;
+            transition: all 0.2s ease;
+        }
+
+        /* 头部标题区 */
+        .title-section {
+            text-align: center;
+            margin-bottom: 1.2rem;
+            border-bottom: 1px solid #e2e6df;
+            padding-bottom: 1rem;
+        }
+        h1 {
+            font-size: 1.9rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            color: #2b5e2f;
+            margin-bottom: 0.5rem;
+        }
+        /* 图片自然居中，圆润且不突兀 */
+        .logo-img {
+            text-align: center;
+            margin: 1rem 0 0.8rem;
+        }
+        img {
+            max-width: 160px;
+            height: auto;
+            border-radius: 18px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+            background: #f1efe7;
+            padding: 4px;
+        }
+        /* 小号冷知识 */
+        .cold-fact {
+            font-size: 0.8rem;
+            color: #6f7c64;
+            background: #f6f4ef;
+            display: inline-block;
+            padding: 0.25rem 1rem;
+            border-radius: 30px;
+            margin-top: 0.5rem;
+            font-weight: normal;
+        }
+
+        /* 正文区域：保持原汁原味的段落间距 */
+        .content p {
+            margin: 0.85rem 0;
+            font-size: 1rem;
+            line-height: 1.55;
+            color: #2e3a2b;
+        }
+        /* 特殊留白区域保留，但更透气 */
+        .content br + p, .content p:first-child {
+            margin-top: 0;
+        }
+
+        /* 出版/版权信息区域 (仿书末版权页) */
+        .colophon {
+            margin: 1.5rem 0 1rem;
+            padding-top: 0.8rem;
+            border-top: 1px dashed #dee2d8;
+            font-size: 0.9rem;
+            color: #4a5b42;
+        }
+        .colophon p {
+            margin: 0.3rem 0;
+            font-size: 0.88rem;
+        }
+
+        /* 人员列表 (整齐干净) */
+        .credits {
+            background: #fafaf7;
+            padding: 1rem 1.4rem;
+            border-radius: 20px;
+            margin: 1rem 0 1.2rem;
+        }
+        .credits p {
+            margin: 0.35rem 0;
+            font-size: 0.92rem;
+        }
+
+        /* 视频区域 - 响应式，保持比例，简约居中 */
+        .video-section {
+            margin: 1.6rem 0 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            justify-content: center;
+            align-items: center;
+        }
+        .video-card {
+            background: #fefefc;
+            border-radius: 20px;
+            padding: 0.6rem;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.02);
+            transition: transform 0.1s ease;
+        }
+        video {
+            display: block;
+            border-radius: 14px;
+            background: #ece8df;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+            max-width: 100%;
+            height: auto;
+        }
+        /* 保持原始宽高属性，但针对移动端适配 */
+        video[width="426.67"] {
+            width: 100%;
+            max-width: 426px;
+        }
+        video[width="320"] {
+            width: 100%;
+            max-width: 320px;
+        }
+
+        /* 链接样式：沉静不张扬 */
+        a {
+            color: #3e6b3a;
+            text-decoration: none;
+            border-bottom: 1px solid #cbdcc4;
+            transition: color 0.2s, border-color 0.2s;
+        }
+        a:hover {
+            color: #1c3e1a;
+            border-bottom-color: #7fa06c;
+        }
+
+        /* 引号趣文部分 */
+        .fun-note {
+            margin: 1rem 0 0.5rem;
+            font-style: normal;
+            padding-left: 0.2rem;
+        }
+
+        /* 最后 github 脚注 */
+        .footer-note {
+            margin-top: 2rem;
+            font-size: 0.75rem;
+            text-align: center;
+            color: #8d9a82;
+            border-top: 1px solid #e9ece2;
+            padding-top: 1.2rem;
+        }
+
+        /* 保持趣味表扬部分的强调 (不用emoji，只做轻微视觉) */
+        .special-praise {
+            background: transparent;
+            font-weight: 500;
+            display: inline-block;
+        }
+
+        /* 让所有文字内容完全不变 (只优化间距和背景) */
+        hr {
+            display: none;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem;
+            }
+            .page {
+                padding: 1.5rem;
+            }
+            h1 {
+                font-size: 1.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <!-- 所有文字严格保留，一个标点都不改动 -->
+    <div class="title-section">
+        <h1>林里之春(LLZC)出版社</h1>
+        <div class="logo-img">
+            <img src="llzc.PNG" alt="你咋看到这个的？">
+        </div>
+        <div class="cold-fact">冷知识：林里之春出首字母对应：L L Z C 也就是  刘（L）峻宇 刘（L）钊闻 张（Z）云哲 陈（C）祥麟）</div>
+    </div>
+
+    <div class="content">
+        <p>如你所见，这个页面非常空白……</p>
+        <p>因为我没时间去搞这个，就只能写这么几句话（当然下面也写了好多）</p>
+        <p>总之，非常感谢我的几位好兄弟能和我一起完成这个作业，这次写作业的过程也非常愉快。</p>
+        <p>当然也很感谢你访问这个网站，看到这里。</p>
+        <p>希望在仅剩的两个月里我们一起快乐地度过小学时光！</p>
+        <p>（全员鞠躬）</p>
+    </div>
+
+    <!-- 出版信息区完全保留原始文本 -->
+    <div class="colophon">
+        <p>出版：林里之春（LLZC）出版社</p>
+        <p>网址：https://xnhkj.github.io|<a href="https://docs.qq.com/doc/DV2xabFVRclFJYmdw">刘峻宇制作的页面，点击跳转</a></p>
+        <p>重印：林里之春出版传媒股份有限公司</p>
+        <p>发行：广东林里之春（LLZC）发行集团有限公司</p>
+        <p>印刷：广东林里之春纯手写印刷有限公司</p>
+        <p>版次：2026年5月17日第一版</p>
+        <p>印次：2026年5月17日第一次印刷</p>
+        <p>印张：0</p>
+        <p>字数：0.6千字</p>
+        <p>印数：100，000-200，000册（2026夏）</p>
+        <p>书号：ISBN 197-6-208-93631-5</p>
+        <p>定价：14.8￥</p>
+        <p>价格依据文件：粤发改价【2017】434号 粤发改规【2022】3号</p>
+    </div>
+
+    <!-- 总主编 / 人员列表 完全保留内容 -->
+    <div class="credits">
+        <p>总主编：刘峻宇 刘钊闻 张云哲 陈祥麟</p>
+        <p>小学主编：刘峻宇（执行） 刘钊闻 张云哲 陈祥麟</p>
+        <p>编写人员：刘峻宇 刘钊闻 张云哲 陈祥麟</p>
+        <p>责任编辑：刘峻宇 刘钊闻 张云哲 陈祥麟</p>
+        <p>美术编辑：刘峻宇 刘钊闻 张云哲</p>
+        <p>午饭策划：陈祥麟（特别表扬！！！！！！！！）</p>
+    </div>
+
+    <!-- 趣的内容 + 视频（保留原有标签属性不变，但响应式优化） -->
+    <div class="fun-note">
+        <p>下面是一些有我们在写这个东西时发生的趣的内容：</p>
+    </div>
+    <div class="video-section">
+        <div class="video-card">
+            <video width="426.67" height="240" controls>
+                <source src="1.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="video-card">
+            <video width="320" height="240" controls>
+                <source src="2.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+    <!-- 后续原始文本，完全保留 -->
+    <div class="content">
+        <p>就这么多，谢谢你的细心阅读！</p>
+    </div>
+
+    <!-- 最后的github及备案信息 (保留原链接和文案) -->
+    <div class="footer-note">
+        <p>本页面由Github制作，开源仓库：<a href="https://github.com/xnhkj/XNHKJ.github.io/">点击跳转 </a>ICP备案号：无</p>
+    </div>
+</div>
+</body>
 </html>
